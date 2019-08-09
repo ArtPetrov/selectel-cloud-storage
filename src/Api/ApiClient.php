@@ -58,15 +58,15 @@ class ApiClient implements ApiClientContract
      *
      * @param string $username
      * @param string $password
-     * @param null $auth_url
+     * @param null $authUrl
      */
-    public function __construct($username, $password, $auth_url = null)
+    public function __construct($username, $password, $authUrl = null)
     {
         $this->username = $username;
         $this->password = $password;
 
-        if (!is_null($auth_url)) {
-            $this->auth_url = $auth_url;
+        if (!is_null($authUrl)) {
+            $this->auth_url = $authUrl;
         }
 
     }
