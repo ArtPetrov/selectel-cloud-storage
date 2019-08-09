@@ -49,7 +49,7 @@ class FileUploader implements FileUploaderContract
     {
         $headers = [];
 
-        if ($verifyChecksum) {
+        if ($verifyChecksum && !is_resource($body)) {
             $headers['ETag'] = md5($body);
         }
 
