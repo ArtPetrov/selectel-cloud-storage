@@ -11,7 +11,12 @@ use ArgentCrusade\Selectel\CloudStorage\Exceptions\AuthenticationFailedException
 
 class ApiClient implements ApiClientContract
 {
-    const AUTH_URL = 'https://auth.selcdn.ru';
+    /**
+     * API Auth.
+     *
+     * @var string
+     */
+    public $auth_url = 'https://auth.selcdn.ru';
 
     /**
      * API Username.
@@ -53,11 +58,17 @@ class ApiClient implements ApiClientContract
      *
      * @param string $username
      * @param string $password
+     * @param null $auth_url
      */
-    public function __construct($username, $password)
+    public function __construct($username, $password, $auth_url = null)
     {
         $this->username = $username;
         $this->password = $password;
+
+        if (!is_null($auth_url)) {
+            $this->auth_url = $auth_url;
+        }
+
     }
 
     /**
@@ -152,16 +163,16 @@ class ApiClient implements ApiClientContract
     /**
      * Performs authentication request and returns its response.
      *
+     * @return \Psr\Http\Message\ResponseInterface
      * @throws \ArgentCrusade\Selectel\CloudStorage\Exceptions\AuthenticationFailedException
      *
-     * @return \Psr\Http\Message\ResponseInterface
      */
     public function authenticationResponse()
     {
         $client = new Client();
 
         try {
-            $response = $client->request('GET', static::AUTH_URL, [
+            $response = $client->request('GET', $this->auth_url, [
                 'headers' => [
                     'X-Auth-User' => $this->username,
                     'X-Auth-Key' => $this->password,
@@ -179,7 +190,7 @@ class ApiClient implements ApiClientContract
      *
      * @param string $method
      * @param string $url
-     * @param array  $params = []
+     * @param array $params = []
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
