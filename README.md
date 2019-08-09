@@ -275,22 +275,6 @@ $ vendor/bin/phpunit
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-## Security
-
-If you discover any security related issues, please email zurbaev@gmail.com instead of using the issue tracker.
-
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-[ico-version]: https://poser.pugx.org/ArtPetrov/selectel-cloud-storage/version?format=flat
-[ico-license]: https://poser.pugx.org/ArtPetrov/selectel-cloud-storage/license?format=flat
-[ico-travis]: https://api.travis-ci.org/ArtPetrov/selectel-cloud-storage.svg?branch=master
-[ico-styleci]: https://styleci.io/repos/78674486/shield?branch=master&style=flat
-[ico-scrutinizer]: https://scrutinizer-ci.com/g/ArtPetrov/selectel-cloud-storage/badges/quality-score.png?b=master
-
-[link-packagist]: https://packagist.org/packages/ArtPetrov/selectel-cloud-storage
-[link-travis]: https://travis-ci.org/ArtPetrov/selectel-cloud-storage
-[link-styleci]: https://styleci.io/repos/78674486
-[link-scrutinizer]: https://scrutinizer-ci.com/g/ArtPetrov/selectel-cloud-storage/
-[link-author]: https://github.com/tzurbaev
