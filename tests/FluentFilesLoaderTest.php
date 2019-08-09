@@ -1,8 +1,9 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 use ArtPetrov\Selectel\CloudStorage\FluentFilesLoader;
 
-class FluentFilesLoaderTest extends PHPUnit_Framework_TestCase
+class FluentFilesLoaderTest extends TestCase
 {
     /** @test */
     function directory_loader()
@@ -15,7 +16,8 @@ class FluentFilesLoaderTest extends PHPUnit_Framework_TestCase
 
         $loader = new FluentFilesLoader($api, 'test', '/test');
 
-        $loader->fromDirectory('/test-directory')->get();
+       self::assertNotNull($loader->fromDirectory('/test-directory')->get());
+
     }
 
     /** @test */
@@ -29,7 +31,8 @@ class FluentFilesLoaderTest extends PHPUnit_Framework_TestCase
 
         $loader = new FluentFilesLoader($api, 'test', '/test');
 
-        $loader->withPrefix('test-directory/image-')->get();
+        self::assertNotNull($loader->withPrefix('test-directory/image-')->get());
+
     }
 
     /** @test */
@@ -43,7 +46,8 @@ class FluentFilesLoaderTest extends PHPUnit_Framework_TestCase
 
         $loader = new FluentFilesLoader($api, 'test', '/test');
 
-        $loader->withDelimiter('test')->get();
+        self::assertNotNull($loader->withDelimiter('test')->get());
+
     }
 
     /** @test */
@@ -57,7 +61,7 @@ class FluentFilesLoaderTest extends PHPUnit_Framework_TestCase
 
         $loader = new FluentFilesLoader($api, 'test', '/test');
 
-        $loader->limit(5)->get();
+        self::assertNotNull($loader->limit(5)->get());
     }
 
     /** @test */
@@ -72,7 +76,7 @@ class FluentFilesLoaderTest extends PHPUnit_Framework_TestCase
 
         $loader = new FluentFilesLoader($api, 'test', '/test');
 
-        $loader->limit(5, 'last-previous-file.txt')->get();
+        self::assertNotNull($loader->limit(5, 'last-previous-file.txt')->get());
     }
 
     /** @test */
@@ -87,9 +91,9 @@ class FluentFilesLoaderTest extends PHPUnit_Framework_TestCase
 
         $loader = new FluentFilesLoader($api, 'test', '/test');
 
-        $loader->fromDirectory('/test')
+        self::assertNotNull($loader->fromDirectory('/test')
             ->withPrefix('file-')
-            ->get();
+            ->get());
     }
 
     /** @test */
@@ -107,11 +111,11 @@ class FluentFilesLoaderTest extends PHPUnit_Framework_TestCase
 
         $loader = new FluentFilesLoader($api, 'test', '/test');
 
-        $loader->fromDirectory('/test')
+        self::assertNotNull($loader->fromDirectory('/test')
             ->withPrefix('/file-')
             ->withDelimiter('test')
             ->limit(10, 'last-previous-file.txt')
-            ->get();
+            ->get());
     }
 
     /** @test */
@@ -137,7 +141,7 @@ class FluentFilesLoaderTest extends PHPUnit_Framework_TestCase
             ->get();
 
         foreach ($files as $file) {
-            $this->assertInternalType('string', $file->name());
+            self::assertIsString($file->name());
         }
     }
 

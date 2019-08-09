@@ -1,11 +1,11 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 use ArtPetrov\Selectel\CloudStorage\CloudStorage;
-use ArtPetrov\Selectel\CloudStorage\Exceptions\ApiRequestFailedException;
 
-class ContainersTest extends PHPUnit_Framework_TestCase
+class ContainersTest extends TestCase
 {
-    public function tearDown()
+    protected function setUp(): void
     {
         Mockery::close();
     }
@@ -30,7 +30,7 @@ class ContainersTest extends PHPUnit_Framework_TestCase
 
         $container = $storage->createContainer('container1');
 
-        $this->assertEquals('container1', $container->name());
+        self::assertEquals('container1', $container->name());
     }
 
     /** @test */
@@ -47,7 +47,7 @@ class ContainersTest extends PHPUnit_Framework_TestCase
         $storage = new CloudStorage($api);
         $containers = $storage->containers();
 
-        $this->assertEquals(3, count($containers));
+        self::assertEquals(3, count($containers));
     }
 
     /** @test */
@@ -66,13 +66,13 @@ class ContainersTest extends PHPUnit_Framework_TestCase
 
         $first = $containers->get('container1');
 
-        $this->assertEquals('container1', $first->name());
-        $this->assertEquals('public', $first->type());
-        $this->assertEquals(2, $first->filesCount());
+        self::assertEquals('container1', $first->name());
+        self::assertEquals('public', $first->type());
+        self::assertEquals(2, $first->filesCount());
 
-        $this->assertEquals(1024, $first->size());
-        $this->assertEquals(2048, $first->uploadedBytes());
-        $this->assertEquals(1024, $first->downloadedBytes());
+        self::assertEquals(1024, $first->size());
+        self::assertEquals(2048, $first->uploadedBytes());
+        self::assertEquals(1024, $first->downloadedBytes());
     }
 
     /** @test */
@@ -90,9 +90,9 @@ class ContainersTest extends PHPUnit_Framework_TestCase
         $containers = $storage->containers();
         $container = $containers->get('container1');
 
-        $this->assertEquals('http://xxx.selcdn.ru/container1', $container->url());
-        $this->assertEquals('http://xxx.selcdn.ru/container1/file.txt', $container->url('file.txt'));
-        $this->assertEquals('http://xxx.selcdn.ru/container1/file.txt', $container->url('/file.txt'));
+        self::assertEquals('http://xxx.selcdn.ru/container1', $container->url());
+        self::assertEquals('http://xxx.selcdn.ru/container1/file.txt', $container->url('file.txt'));
+        self::assertEquals('http://xxx.selcdn.ru/container1/file.txt', $container->url('/file.txt'));
     }
 
     /** @test */
@@ -111,9 +111,9 @@ class ContainersTest extends PHPUnit_Framework_TestCase
         $container = $containers->get('container1');
 
         $container->setUrl('https://static.example.org');
-        $this->assertEquals('https://static.example.org', $container->url());
-        $this->assertEquals('https://static.example.org/file.txt', $container->url('file.txt'));
-        $this->assertEquals('https://static.example.org/file.txt', $container->url('/file.txt'));
+        self::assertEquals('https://static.example.org', $container->url());
+        self::assertEquals('https://static.example.org/file.txt', $container->url('file.txt'));
+        self::assertEquals('https://static.example.org/file.txt', $container->url('/file.txt'));
     }
 
     /** @test */
@@ -137,7 +137,7 @@ class ContainersTest extends PHPUnit_Framework_TestCase
         $container = $containers->get('container1');
         $files = $container->files()->get();
 
-        $this->assertEquals(3, count($files));
+        self::assertEquals(3, count($files));
     }
 
     /** @test */
@@ -165,10 +165,10 @@ class ContainersTest extends PHPUnit_Framework_TestCase
 
         $file = $container->getFileFromArray($firstFile);
 
-        $this->assertEquals($firstFile['filename'], $file->name());
-        $this->assertEquals($firstFile['name'], $file->path());
-        $this->assertEquals($firstFile['bytes'], $file->size());
-        $this->assertEquals($firstFile['content_type'], $file->contentType());
+        self::assertEquals($firstFile['filename'], $file->name());
+        self::assertEquals($firstFile['name'], $file->path());
+        self::assertEquals($firstFile['bytes'], $file->size());
+        self::assertEquals($firstFile['content_type'], $file->contentType());
     }
 
     /** @test */
@@ -194,10 +194,10 @@ class ContainersTest extends PHPUnit_Framework_TestCase
         $filesCollection = $container->getFilesCollectionFromArrays($files);
 
         foreach ($files as $index => $file) {
-            $this->assertEquals($file['filename'], $filesCollection[$index]->name());
-            $this->assertEquals($file['name'], $filesCollection[$index]->path());
-            $this->assertEquals($file['bytes'], $filesCollection[$index]->size());
-            $this->assertEquals($file['content_type'], $filesCollection[$index]->contentType());
+            self::assertEquals($file['filename'], $filesCollection[$index]->name());
+            self::assertEquals($file['name'], $filesCollection[$index]->path());
+            self::assertEquals($file['bytes'], $filesCollection[$index]->size());
+            self::assertEquals($file['content_type'], $filesCollection[$index]->contentType());
         }
     }
 
@@ -227,10 +227,10 @@ class ContainersTest extends PHPUnit_Framework_TestCase
         ]);
 
         foreach ($files as $index => $file) {
-            $this->assertEquals($file['filename'], $filesCollection[$index]->name());
-            $this->assertEquals($file['name'], $filesCollection[$index]->path());
-            $this->assertEquals($file['bytes'], $filesCollection[$index]->size());
-            $this->assertEquals($file['content_type'], $filesCollection[$index]->contentType());
+            self::assertEquals($file['filename'], $filesCollection[$index]->name());
+            self::assertEquals($file['name'], $filesCollection[$index]->path());
+            self::assertEquals($file['bytes'], $filesCollection[$index]->size());
+            self::assertEquals($file['content_type'], $filesCollection[$index]->contentType());
         }
     }
 
@@ -271,13 +271,13 @@ class ContainersTest extends PHPUnit_Framework_TestCase
         $storage = new CloudStorage($api);
         $container = $storage->getContainer('container1');
 
-        $this->assertEquals('container1', $container->name());
-        $this->assertEquals('public', $container->type());
-        $this->assertEquals(2, $container->filesCount());
+        self::assertEquals('container1', $container->name());
+        self::assertEquals('public', $container->type());
+        self::assertEquals(2, $container->filesCount());
 
-        $this->assertEquals(1024, $container->size());
-        $this->assertEquals(2048, $container->uploadedBytes());
-        $this->assertEquals(1024, $container->downloadedBytes());
+        self::assertEquals(1024, $container->size());
+        self::assertEquals(2048, $container->uploadedBytes());
+        self::assertEquals(1024, $container->downloadedBytes());
     }
 
     /** @test */
@@ -298,8 +298,8 @@ class ContainersTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($container->hasMeta('X-Container-Meta-Bar'));
         $this->assertFalse($container->hasMeta('Unknown'));
 
-        $this->assertEquals('Bar', $container->getMeta('Foo'));
-        $this->assertEquals('Baz', $container->getMeta('X-Container-Meta-Bar'));
+        self::assertEquals('Bar', $container->getMeta('Foo'));
+        self::assertEquals('Baz', $container->getMeta('X-Container-Meta-Bar'));
 
         $this->expectException(InvalidArgumentException::class);
         $container->getMeta('Unknown');
@@ -331,16 +331,16 @@ class ContainersTest extends PHPUnit_Framework_TestCase
         $storage = new CloudStorage($api);
         $container = $storage->getContainer('container1');
 
-        $this->assertEquals('public', $container->type());
+        self::assertEquals('public', $container->type());
 
         $container->setType('private');
-        $this->assertEquals('private', $container->type());
+        self::assertEquals('private', $container->type());
 
         $container->setType('gallery');
-        $this->assertEquals('gallery', $container->type());
+        self::assertEquals('gallery', $container->type());
 
         $container->setType('public');
-        $this->assertEquals('public', $container->type());
+        self::assertEquals('public', $container->type());
     }
 
     /** @test */
@@ -395,7 +395,7 @@ class ContainersTest extends PHPUnit_Framework_TestCase
         $storage = new CloudStorage($api);
         $container = $storage->getContainer('container1');
 
-        $this->assertEquals(md5('test'), $container->createDir('/test-directory'));
+        self::assertEquals(md5('test'), $container->createDir('/test-directory'));
     }
 
     /** @test */
@@ -446,7 +446,7 @@ class ContainersTest extends PHPUnit_Framework_TestCase
 
         $uploadedEtag = $container->uploadFromString($path, $contents);
 
-        $this->assertEquals($etag, $uploadedEtag);
+        self::assertEquals($etag, $uploadedEtag);
     }
 
     /** @test */
@@ -475,7 +475,7 @@ class ContainersTest extends PHPUnit_Framework_TestCase
 
         $uploadedEtag = $container->uploadFromString($path, $contents, ['extract-archive' => 'tar']);
 
-        $this->assertEquals($etag, $uploadedEtag);
+        self::assertEquals($etag, $uploadedEtag);
     }
 
     /** @test */
@@ -503,7 +503,7 @@ class ContainersTest extends PHPUnit_Framework_TestCase
 
         $uploadedEtag = $container->uploadFromStream($path, $resource);
 
-        $this->assertInternalType('string', $uploadedEtag);
+        self::assertIsString($uploadedEtag);
     }
 
     /** @test */
@@ -531,7 +531,7 @@ class ContainersTest extends PHPUnit_Framework_TestCase
 
         $uploadedEtag = $container->uploadFromStream($path, $resource, ['extract-archive' => 'tar']);
 
-        $this->assertInternalType('string', $uploadedEtag);
+        self::assertIsString($uploadedEtag);
     }
 
     /** @test */
@@ -552,7 +552,8 @@ class ContainersTest extends PHPUnit_Framework_TestCase
 
         $storage = new CloudStorage($api);
         $container = $storage->getContainer('container1');
-        $container->delete();
+
+        self::assertNull($container->delete());
     }
 
     public function getFileExistsRequest($container, $file)

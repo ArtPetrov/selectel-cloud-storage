@@ -2,3 +2,4 @@
 /dev/
 /vendor/
 composer.lock
+.phpunit.result.cache

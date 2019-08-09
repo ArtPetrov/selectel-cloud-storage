@@ -1,10 +1,11 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 use ArtPetrov\Selectel\CloudStorage\CloudStorage;
 
-class FilesTest extends PHPUnit_Framework_TestCase
+class FilesTest extends TestCase
 {
-    public function tearDown()
+    protected function setUp(): void
     {
         Mockery::close();
     }
@@ -31,14 +32,14 @@ class FilesTest extends PHPUnit_Framework_TestCase
 
         $file = $container->files()->find('/web/index.html');
 
-        $this->assertEquals('container1', $file->container());
-        $this->assertEquals('web/index.html', $file->path());
-        $this->assertEquals('web', $file->directory());
-        $this->assertEquals('index.html', $file->name());
-        $this->assertEquals(1024, $file->size());
-        $this->assertEquals('text/html', $file->contentType());
-        $this->assertEquals('2013-05-27T15:31:25.325041', $file->lastModifiedAt());
-        $this->assertEquals(md5('test'), $file->etag());
+        self::assertEquals('container1', $file->container());
+        self::assertEquals('web/index.html', $file->path());
+        self::assertEquals('web', $file->directory());
+        self::assertEquals('index.html', $file->name());
+        self::assertEquals(1024, $file->size());
+        self::assertEquals('text/html', $file->contentType());
+        self::assertEquals('2013-05-27T15:31:25.325041', $file->lastModifiedAt());
+        self::assertEquals(md5('test'), $file->etag());
         $this->assertFalse($file->isDeleted());
     }
 
@@ -71,7 +72,7 @@ class FilesTest extends PHPUnit_Framework_TestCase
         $file = $container->files()->find('/web/index.html');
         $expected = file_get_contents(__DIR__.'/fixtures/test.html');
 
-        $this->assertEquals($expected, $file->read());
+        self::assertEquals($expected, $file->read());
     }
 
     /** @test */
@@ -105,7 +106,8 @@ class FilesTest extends PHPUnit_Framework_TestCase
         $buffer = '';
         $stream = $file->readStream();
 
-        $this->assertInternalType('resource', $stream);
+        self::assertIsResource($stream);
+
 
         while (!feof($stream)) {
             $buffer .= fread($stream, 1024);
@@ -113,7 +115,7 @@ class FilesTest extends PHPUnit_Framework_TestCase
 
         fclose($stream);
 
-        $this->assertEquals($expected, $buffer);
+        self::assertEquals($expected, $buffer);
     }
 
     /** @test */
@@ -144,13 +146,13 @@ class FilesTest extends PHPUnit_Framework_TestCase
         $container = $containers->get('container1');
 
         $file = $container->files()->find('/web/index.html');
- 
-        $this->assertEquals('index.html', $file->name());
- 
+
+        self::assertEquals('index.html', $file->name());
+
         $file->rename('index2.html');
- 
-        $this->assertEquals('index2.html', $file->name());
-        $this->assertEquals('web/index2.html', $file->path());
+
+        self::assertEquals('index2.html', $file->name());
+        self::assertEquals('web/index2.html', $file->path());
     }
 
     /** @test */
@@ -176,14 +178,14 @@ class FilesTest extends PHPUnit_Framework_TestCase
         $container = $containers->get('container1');
 
         $file = $container->files()->find('/web/index.html');
- 
-        $this->assertEquals('index.html', $file->name());
+
+        self::assertEquals('index.html', $file->name());
 
         $copyWithinContainerResult = $file->copy('web/index2.html');
         $copyToAnotherContainerResult = $file->copy('web/index2.html', 'container2');
- 
-        $this->assertEquals('/container1/web/index2.html', $copyWithinContainerResult);
-        $this->assertEquals('/container2/web/index2.html', $copyToAnotherContainerResult);
+
+        self::assertEquals('/container1/web/index2.html', $copyWithinContainerResult);
+        self::assertEquals('/container2/web/index2.html', $copyToAnotherContainerResult);
     }
 
     /** @test */
