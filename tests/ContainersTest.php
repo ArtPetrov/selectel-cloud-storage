@@ -1,7 +1,7 @@
 <?php
 
-use ArgentCrusade\Selectel\CloudStorage\CloudStorage;
-use ArgentCrusade\Selectel\CloudStorage\Exceptions\ApiRequestFailedException;
+use ArtPetrov\Selectel\CloudStorage\CloudStorage;
+use ArtPetrov\Selectel\CloudStorage\Exceptions\ApiRequestFailedException;
 
 class ContainersTest extends PHPUnit_Framework_TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace ArgentCrusade\Selectel\CloudStorage\Contracts;
+namespace ArtPetrov\Selectel\CloudStorage\Contracts;
 
 interface HasMetaData
 {
@@ -29,7 +29,7 @@ interface HasMetaData
      *
      * @param array $meta Array of meta data (without "X-{Object}-Meta" prefixes).
      *
-     * @throws \ArgentCrusade\Selectel\CloudStorage\Exceptions\ApiRequestFailedException
+     * @throws \ArtPetrov\Selectel\CloudStorage\Exceptions\ApiRequestFailedException
      *
      * @return bool
      */

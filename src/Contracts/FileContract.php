@@ -1,6 +1,6 @@
 <?php
 
-namespace ArgentCrusade\Selectel\CloudStorage\Contracts;
+namespace ArtPetrov\Selectel\CloudStorage\Contracts;
 
 interface FileContract
 {
@@ -106,7 +106,7 @@ interface FileContract
      *
      * @throws \LogicException
      * @throws \InvalidArgumentException
-     * @throws \ArgentCrusade\Selectel\CloudStorage\Exceptions\ApiRequestFailedException
+     * @throws \ArtPetrov\Selectel\CloudStorage\Exceptions\ApiRequestFailedException
      *
      * @return string
      */
@@ -128,7 +128,7 @@ interface FileContract
      * Deletes file.
      *
      * @throws \LogicException
-     * @throws \ArgentCrusade\Selectel\CloudStorage\Exceptions\ApiRequestFailedException
+     * @throws \ArtPetrov\Selectel\CloudStorage\Exceptions\ApiRequestFailedException
      */
     public function delete();
 }

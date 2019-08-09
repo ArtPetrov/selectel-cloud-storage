@@ -2,7 +2,7 @@
 
 Contributions are **welcome** and will be fully **credited**.
 
-We accept contributions via Pull Requests on [Github](https://github.com/ArgentCrusade/selectel-cloud-storage).
+We accept contributions via Pull Requests on [Github](https://github.com/ArtPetrov/selectel-cloud-storage).
 
 
 ## Pull Requests

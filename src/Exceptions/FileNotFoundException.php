@@ -1,6 +1,6 @@
 <?php
 
-namespace ArgentCrusade\Selectel\CloudStorage\Exceptions;
+namespace ArtPetrov\Selectel\CloudStorage\Exceptions;
 
 class FileNotFoundException extends ApiRequestFailedException
 {

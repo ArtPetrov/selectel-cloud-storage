@@ -1,6 +1,6 @@
 <?php
 
-use ArgentCrusade\Selectel\CloudStorage\FluentFilesLoader;
+use ArtPetrov\Selectel\CloudStorage\FluentFilesLoader;
 
 class FluentFilesLoaderTest extends PHPUnit_Framework_TestCase
 {

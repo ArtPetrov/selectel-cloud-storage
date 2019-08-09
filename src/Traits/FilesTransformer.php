@@ -1,9 +1,9 @@
 <?php
 
-namespace ArgentCrusade\Selectel\CloudStorage\Traits;
+namespace ArtPetrov\Selectel\CloudStorage\Traits;
 
-use ArgentCrusade\Selectel\CloudStorage\File;
-use ArgentCrusade\Selectel\CloudStorage\Collections\Collection;
+use ArtPetrov\Selectel\CloudStorage\File;
+use ArtPetrov\Selectel\CloudStorage\Collections\Collection;
 
 trait FilesTransformer
 {
@@ -17,7 +17,7 @@ trait FilesTransformer
     /**
      * API Client.
      *
-     * @return \ArgentCrusade\Selectel\CloudStorage\Contracts\Api\ApiClientContract
+     * @return \ArtPetrov\Selectel\CloudStorage\Contracts\Api\ApiClientContract
      */
     abstract public function apiClient();
 
@@ -26,7 +26,7 @@ trait FilesTransformer
      *
      * @param array $file File array.
      *
-     * @return \ArgentCrusade\Selectel\CloudStorage\Contracts\FileContract
+     * @return \ArtPetrov\Selectel\CloudStorage\Contracts\FileContract
      */
     public function getFileFromArray(array $file)
     {
@@ -37,9 +37,9 @@ trait FilesTransformer
      * Transforms Collection of file arrays (or plain array) to Collection of File objects.
      * Warning: converting a lot of files to `File` instances may result in performance loss.
      *
-     * @param array|\ArgentCrusade\Selectel\CloudStorage\Collections\Collection $files
+     * @param array|\ArtPetrov\Selectel\CloudStorage\Collections\Collection $files
      *
-     * @return \ArgentCrusade\Selectel\CloudStorage\Collections\Collection
+     * @return \ArtPetrov\Selectel\CloudStorage\Collections\Collection
      */
     public function getFilesCollectionFromArrays($files)
     {

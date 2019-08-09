@@ -1,6 +1,6 @@
 <?php
 
-use ArgentCrusade\Selectel\CloudStorage\Api\ApiClient;
+use ArtPetrov\Selectel\CloudStorage\Api\ApiClient;
 use GuzzleHttp\Psr7\Response;
 
 class TestHelpers

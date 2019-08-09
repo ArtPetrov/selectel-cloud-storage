@@ -1,12 +1,12 @@
 <?php
 
-namespace ArgentCrusade\Selectel\CloudStorage\Collections;
+namespace ArtPetrov\Selectel\CloudStorage\Collections;
 
 use Iterator;
 use Countable;
 use ArrayAccess;
 use JsonSerializable;
-use ArgentCrusade\Selectel\CloudStorage\Contracts\Collections\CollectionContract;
+use ArtPetrov\Selectel\CloudStorage\Contracts\Collections\CollectionContract;
 
 class Collection implements CollectionContract, ArrayAccess, Countable, Iterator, JsonSerializable
 {

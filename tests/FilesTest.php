@@ -1,6 +1,6 @@
 <?php
 
-use ArgentCrusade\Selectel\CloudStorage\CloudStorage;
+use ArtPetrov\Selectel\CloudStorage\CloudStorage;
 
 class FilesTest extends PHPUnit_Framework_TestCase
 {

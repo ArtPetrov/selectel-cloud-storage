@@ -1,10 +1,10 @@
 <?php
 
-namespace ArgentCrusade\Selectel\CloudStorage\Traits;
+namespace ArtPetrov\Selectel\CloudStorage\Traits;
 
 use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
-use ArgentCrusade\Selectel\CloudStorage\Exceptions\ApiRequestFailedException;
+use ArtPetrov\Selectel\CloudStorage\Exceptions\ApiRequestFailedException;
 
 trait MetaData
 {
@@ -21,7 +21,7 @@ trait MetaData
     /**
      * API Client.
      *
-     * @return \ArgentCrusade\Selectel\CloudStorage\Contracts\Api\ApiClientContract
+     * @return \ArtPetrov\Selectel\CloudStorage\Contracts\Api\ApiClientContract
      */
     abstract public function apiClient();
 
@@ -133,7 +133,7 @@ trait MetaData
      *
      * @param array $meta Array of meta data (without "X-{Object}-Meta" prefixes).
      *
-     * @throws \ArgentCrusade\Selectel\CloudStorage\Exceptions\ApiRequestFailedException
+     * @throws \ArtPetrov\Selectel\CloudStorage\Exceptions\ApiRequestFailedException
      *
      * @return bool
      */

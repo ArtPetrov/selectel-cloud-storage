@@ -1,6 +1,6 @@
 <?php
 
-namespace ArgentCrusade\Selectel\CloudStorage\Contracts\Api;
+namespace ArtPetrov\Selectel\CloudStorage\Contracts\Api;
 
 use GuzzleHttp\ClientInterface;
 
@@ -11,7 +11,7 @@ interface ApiClientContract
      *
      * @param \GuzzleHttp\ClientInterface $httpClient
      *
-     * @return \ArgentCrusade\Selectel\CloudStorage\Contracts\Api\ApiClientContract
+     * @return \ArtPetrov\Selectel\CloudStorage\Contracts\Api\ApiClientContract
      */
     public function setHttpClient(ClientInterface $httpClient);
 

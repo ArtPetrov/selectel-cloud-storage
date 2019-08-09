@@ -1,37 +1,34 @@
-# argentcrusade/selectel-cloud-storage
+# artpetrov/selectel-cloud-storage
 
-[![Build Status][ico-travis]][link-travis]
-[![StyleCI][ico-styleci]][link-styleci]
-[![ScrutinizerCI][ico-scrutinizer]][link-scrutinizer]
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
 
 Unofficial PHP SDK for [Selectel Cloud Storage](https://selectel.com/services/cloud-storage/) API.
 
 ## Requirements
-This package requires PHP 5.6 or higher.
+This package requires PHP 7.*.
 
 ## Installation
 
 You can install the package via composer:
 
 ``` bash
-$ composer require argentcrusade/selectel-cloud-storage
+$ composer require artpetrov/selectel-cloud-storage
 ```
 
 ## Usage
 
 ### Initialize Storage
 ``` php
-use ArgentCrusade\Selectel\CloudStorage\Api\ApiClient;
-use ArgentCrusade\Selectel\CloudStorage\CloudStorage;
+use ArtPetrov\Selectel\CloudStorage\Api\ApiClient;
+use ArtPetrov\Selectel\CloudStorage\CloudStorage;
 
 $apiClient = new ApiClient('username', 'password');
 $storage = new CloudStorage($apiClient);
 ```
 
 ### CloudStorage
-`ArgentCrusade\Selectel\CloudStorage\CloudStorage` class allows you to access and create containers.
+`ArtPetrov\Selectel\CloudStorage\CloudStorage` class allows you to access and create containers.
 
 ```php
 // Retrieve single container.
@@ -46,7 +43,7 @@ $containers = $storage->containers();
 ```
 
 ### Containers Collection
-`CloudStorage::containers` method returns instance of `ArgentCrusade\Selectel\CloudStorage\Collections\Collection` class with  retrieved containers objects. This collection object implements `ArrayAccess`, `Countable`, `Iterator` and `JsonSerializable` interfaces, what makes you able to do these things:
+`CloudStorage::containers` method returns instance of `ArtPetrov\Selectel\CloudStorage\Collections\Collection` class with  retrieved containers objects. This collection object implements `ArrayAccess`, `Countable`, `Iterator` and `JsonSerializable` interfaces, what makes you able to do these things:
 
 ```php
 $containers = $storage->containers();
@@ -73,7 +70,7 @@ echo json_encode($containers);
 ```
 
 ### Container Instance
-Container that you've retrieved from Containers Collection is an `ArgentCrusade\Selectel\CloudStorage\Container` instance object which implements `Countable` and `JsonSerializable` interfaces.
+Container that you've retrieved from Containers Collection is an `ArtPetrov\Selectel\CloudStorage\Container` instance object which implements `Countable` and `JsonSerializable` interfaces.
 
 ```php
 $container = $containers->get('my-container');
@@ -102,7 +99,7 @@ $container->delete();
 ```
 
 ### Fluent Files Loader
-You can use instance of `ArgentCrusade\Selectel\CloudStorage\FluentFilesLoader` class to retrieve files from container.
+You can use instance of `ArtPetrov\Selectel\CloudStorage\FluentFilesLoader` class to retrieve files from container.
 Fluent loader returns `Collection` of file arrays or `Collection` of `File` objects.
 
 This instance is accesible from `$container->files()` method and allows you to do following things:
@@ -149,8 +146,8 @@ $files[0]->name(); // First file's name.
 If you need to create `FluentFilesLoader` instance without `Container` instance, use following code:
 
 ```php
-use ArgentCrusade\Selectel\CloudStorage\Api\ApiClient;
-use ArgentCrusade\Selectel\CloudStorage\FluentFilesLoader;
+use ArtPetrov\Selectel\CloudStorage\Api\ApiClient;
+use ArtPetrov\Selectel\CloudStorage\FluentFilesLoader;
 
 $api = new ApiClient('username', 'password');
 $filesLoader = new FluentFilesLoader($api, 'container-name', '/container-name');
@@ -201,7 +198,7 @@ $firstFile will be something like this:
 */
 ```
 
-But when you're using `Container::files()->find` method, you receive instance of `ArgentCrusade\Selectel\CloudStorage\File` class that implements `JsonSerializable` interface. With this object you can perform operations such as renaming, copying and deleting file.
+But when you're using `Container::files()->find` method, you receive instance of `ArtPetrov\Selectel\CloudStorage\File` class that implements `JsonSerializable` interface. With this object you can perform operations such as renaming, copying and deleting file.
 
 ```php
 $file = $container->files()->find('/path/to/file.txt');
@@ -286,14 +283,14 @@ If you discover any security related issues, please email zurbaev@gmail.com inst
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[ico-version]: https://poser.pugx.org/argentcrusade/selectel-cloud-storage/version?format=flat
-[ico-license]: https://poser.pugx.org/argentcrusade/selectel-cloud-storage/license?format=flat
-[ico-travis]: https://api.travis-ci.org/ArgentCrusade/selectel-cloud-storage.svg?branch=master
+[ico-version]: https://poser.pugx.org/ArtPetrov/selectel-cloud-storage/version?format=flat
+[ico-license]: https://poser.pugx.org/ArtPetrov/selectel-cloud-storage/license?format=flat
+[ico-travis]: https://api.travis-ci.org/ArtPetrov/selectel-cloud-storage.svg?branch=master
 [ico-styleci]: https://styleci.io/repos/78674486/shield?branch=master&style=flat
-[ico-scrutinizer]: https://scrutinizer-ci.com/g/ArgentCrusade/selectel-cloud-storage/badges/quality-score.png?b=master
+[ico-scrutinizer]: https://scrutinizer-ci.com/g/ArtPetrov/selectel-cloud-storage/badges/quality-score.png?b=master
 
-[link-packagist]: https://packagist.org/packages/argentcrusade/selectel-cloud-storage
-[link-travis]: https://travis-ci.org/ArgentCrusade/selectel-cloud-storage
+[link-packagist]: https://packagist.org/packages/ArtPetrov/selectel-cloud-storage
+[link-travis]: https://travis-ci.org/ArtPetrov/selectel-cloud-storage
 [link-styleci]: https://styleci.io/repos/78674486
-[link-scrutinizer]: https://scrutinizer-ci.com/g/ArgentCrusade/selectel-cloud-storage/
+[link-scrutinizer]: https://scrutinizer-ci.com/g/ArtPetrov/selectel-cloud-storage/
 [link-author]: https://github.com/tzurbaev

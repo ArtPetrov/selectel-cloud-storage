@@ -1,14 +1,14 @@
 <?php
 
-namespace ArgentCrusade\Selectel\CloudStorage;
+namespace ArtPetrov\Selectel\CloudStorage;
 
-use ArgentCrusade\Selectel\CloudStorage\Collections\Collection;
-use ArgentCrusade\Selectel\CloudStorage\Traits\FilesTransformer;
-use ArgentCrusade\Selectel\CloudStorage\Contracts\Api\ApiClientContract;
-use ArgentCrusade\Selectel\CloudStorage\Exceptions\FileNotFoundException;
-use ArgentCrusade\Selectel\CloudStorage\Contracts\FilesTransformerContract;
-use ArgentCrusade\Selectel\CloudStorage\Contracts\FluentFilesLoaderContract;
-use ArgentCrusade\Selectel\CloudStorage\Exceptions\ApiRequestFailedException;
+use ArtPetrov\Selectel\CloudStorage\Collections\Collection;
+use ArtPetrov\Selectel\CloudStorage\Traits\FilesTransformer;
+use ArtPetrov\Selectel\CloudStorage\Contracts\Api\ApiClientContract;
+use ArtPetrov\Selectel\CloudStorage\Exceptions\FileNotFoundException;
+use ArtPetrov\Selectel\CloudStorage\Contracts\FilesTransformerContract;
+use ArtPetrov\Selectel\CloudStorage\Contracts\FluentFilesLoaderContract;
+use ArtPetrov\Selectel\CloudStorage\Exceptions\ApiRequestFailedException;
 
 class FluentFilesLoader implements FluentFilesLoaderContract, FilesTransformerContract
 {
@@ -17,7 +17,7 @@ class FluentFilesLoader implements FluentFilesLoaderContract, FilesTransformerCo
     /**
      * API Client.
      *
-     * @var \ArgentCrusade\Selectel\CloudStorage\Contracts\Api\ApiClientContract
+     * @var \ArtPetrov\Selectel\CloudStorage\Contracts\Api\ApiClientContract
      */
     protected $api;
 
@@ -57,7 +57,7 @@ class FluentFilesLoader implements FluentFilesLoaderContract, FilesTransformerCo
     protected $asFileObjects = false;
 
     /**
-     * @param \ArgentCrusade\Selectel\CloudStorage\Contracts\Api\ApiClientContract $api
+     * @param \ArtPetrov\Selectel\CloudStorage\Contracts\Api\ApiClientContract $api
      * @param string                                                               $container
      * @param string                                                               $containerUrl
      */
@@ -75,7 +75,7 @@ class FluentFilesLoader implements FluentFilesLoaderContract, FilesTransformerCo
      * @param string|int $value
      * @param bool       $trimLeadingSlashes = true
      *
-     * @return \ArgentCrusade\Selectel\CloudStorage\Contracts\FluentFilesLoaderContract
+     * @return \ArtPetrov\Selectel\CloudStorage\Contracts\FluentFilesLoaderContract
      */
     protected function setParam($key, $value, $trimLeadingSlashes = true)
     {
@@ -87,7 +87,7 @@ class FluentFilesLoader implements FluentFilesLoaderContract, FilesTransformerCo
     /**
      * API Client.
      *
-     * @return \ArgentCrusade\Selectel\CloudStorage\Contracts\Api\ApiClientContract
+     * @return \ArtPetrov\Selectel\CloudStorage\Contracts\Api\ApiClientContract
      */
     public function apiClient()
     {
@@ -110,7 +110,7 @@ class FluentFilesLoader implements FluentFilesLoaderContract, FilesTransformerCo
      *
      * @param string $directory
      *
-     * @return \ArgentCrusade\Selectel\CloudStorage\Contracts\FluentFilesLoaderContract
+     * @return \ArtPetrov\Selectel\CloudStorage\Contracts\FluentFilesLoaderContract
      */
     public function fromDirectory($directory)
     {
@@ -124,7 +124,7 @@ class FluentFilesLoader implements FluentFilesLoaderContract, FilesTransformerCo
      *
      * @param string $prefix
      *
-     * @return \ArgentCrusade\Selectel\CloudStorage\Contracts\FluentFilesLoaderContract
+     * @return \ArtPetrov\Selectel\CloudStorage\Contracts\FluentFilesLoaderContract
      */
     public function withPrefix($prefix)
     {
@@ -136,7 +136,7 @@ class FluentFilesLoader implements FluentFilesLoaderContract, FilesTransformerCo
      *
      * @param string $delimiter
      *
-     * @return \ArgentCrusade\Selectel\CloudStorage\Contracts\FluentFilesLoaderContract
+     * @return \ArtPetrov\Selectel\CloudStorage\Contracts\FluentFilesLoaderContract
      */
     public function withDelimiter($delimiter)
     {
@@ -151,7 +151,7 @@ class FluentFilesLoader implements FluentFilesLoaderContract, FilesTransformerCo
      * @param int    $limit
      * @param string $markerFile = ''
      *
-     * @return \ArgentCrusade\Selectel\CloudStorage\Contracts\FluentFilesLoaderContract
+     * @return \ArtPetrov\Selectel\CloudStorage\Contracts\FluentFilesLoaderContract
      */
     public function limit($limit, $markerFile = '')
     {
@@ -162,7 +162,7 @@ class FluentFilesLoader implements FluentFilesLoaderContract, FilesTransformerCo
     /**
      * Tells builder to return Collection of File objects instead of arrays.
      *
-     * @return \ArgentCrusade\Selectel\CloudStorage\Contracts\FluentFilesLoaderContract
+     * @return \ArtPetrov\Selectel\CloudStorage\Contracts\FluentFilesLoaderContract
      */
     public function asFileObjects()
     {
@@ -174,9 +174,9 @@ class FluentFilesLoader implements FluentFilesLoaderContract, FilesTransformerCo
     /**
      * Loads all available files from container.
      *
-     * @throws \ArgentCrusade\Selectel\CloudStorage\Exceptions\ApiRequestFailedException
+     * @throws \ArtPetrov\Selectel\CloudStorage\Exceptions\ApiRequestFailedException
      *
-     * @return \ArgentCrusade\Selectel\CloudStorage\Contracts\Collections\CollectionContract
+     * @return \ArtPetrov\Selectel\CloudStorage\Contracts\Collections\CollectionContract
      */
     public function all()
     {
@@ -204,9 +204,9 @@ class FluentFilesLoader implements FluentFilesLoaderContract, FilesTransformerCo
      *
      * @param string $path
      *
-     * @throws \ArgentCrusade\Selectel\CloudStorage\Exceptions\FileNotFoundException
+     * @throws \ArtPetrov\Selectel\CloudStorage\Exceptions\FileNotFoundException
      *
-     * @return \ArgentCrusade\Selectel\CloudStorage\Contracts\FileContract
+     * @return \ArtPetrov\Selectel\CloudStorage\Contracts\FileContract
      */
     public function find($path)
     {
@@ -244,9 +244,9 @@ class FluentFilesLoader implements FluentFilesLoaderContract, FilesTransformerCo
     /**
      * Loads files.
      *
-     * @throws \ArgentCrusade\Selectel\CloudStorage\Exceptions\ApiRequestFailedException
+     * @throws \ArtPetrov\Selectel\CloudStorage\Exceptions\ApiRequestFailedException
      *
-     * @return \ArgentCrusade\Selectel\CloudStorage\Contracts\Collections\CollectionContract
+     * @return \ArtPetrov\Selectel\CloudStorage\Contracts\Collections\CollectionContract
      */
     public function get()
     {
@@ -305,7 +305,7 @@ class FluentFilesLoader implements FluentFilesLoaderContract, FilesTransformerCo
      * @param string $key
      * @param bool   $dropPath = false
      *
-     * @return \ArgentCrusade\Selectel\CloudStorage\Contracts\FluentFilesLoaderContract
+     * @return \ArtPetrov\Selectel\CloudStorage\Contracts\FluentFilesLoaderContract
      */
     protected function appendPathToParam($key, $dropPath = false)
     {

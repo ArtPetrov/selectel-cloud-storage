@@ -1,23 +1,23 @@
 <?php
 
-namespace ArgentCrusade\Selectel\CloudStorage;
+namespace ArtPetrov\Selectel\CloudStorage;
 
-use ArgentCrusade\Selectel\CloudStorage\Contracts\FileUploaderContract;
-use ArgentCrusade\Selectel\CloudStorage\Contracts\Api\ApiClientContract;
-use ArgentCrusade\Selectel\CloudStorage\Exceptions\UploadFailedException;
+use ArtPetrov\Selectel\CloudStorage\Contracts\FileUploaderContract;
+use ArtPetrov\Selectel\CloudStorage\Contracts\Api\ApiClientContract;
+use ArtPetrov\Selectel\CloudStorage\Exceptions\UploadFailedException;
 
 class FileUploader implements FileUploaderContract
 {
     /**
      * Upload file from string or stream resource.
      *
-     * @param \ArgentCrusade\Selectel\CloudStorage\Contracts\Api\ApiClientContract $api
+     * @param \ArtPetrov\Selectel\CloudStorage\Contracts\Api\ApiClientContract $api
      * @param string                                                               $path           Remote path.
      * @param string|resource                                                      $body           File contents.
      * @param array                                                                $params         = [] Upload params.
      * @param bool                                                                 $verifyChecksum = true
      *
-     * @throws \ArgentCrusade\Selectel\CloudStorage\Exceptions\UploadFailedException
+     * @throws \ArtPetrov\Selectel\CloudStorage\Exceptions\UploadFailedException
      *
      * @return string
      */
